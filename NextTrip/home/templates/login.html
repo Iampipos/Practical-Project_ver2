@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ - NextTrip</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            background-color: #2a8c2f;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .header .logo {
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+        .header .login-button {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .search-bar {
+            background-color: #f4f4e8;
+            border-radius: 20px;
+            width: 60%;
+            height: 25px;
+            margin: 0 15px;
+        }
+        .main-image {
+            position: relative;
+            width: 100%;
+            max-width: 768px;
+        }
+        .main-image img {
+            width: 100%;
+            height: auto;
+        }
+        .login-box {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff8e1;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .login-box h2 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .login-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2a8c2f;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 1em;
+            color: #2a8c2f;
+        }
+        .login-option img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">NextTrip</div>
+    <input type="text" class="search-bar" placeholder="">
+    <a href="#" class="login-button">เข้าสู่ระบบ</a>
+</div>
+
+<div class="main-image">
+    <img src="island.jpg" alt="เกาะล้าน">
+    <div class="login-box">
+        <h2>เข้าสู่ระบบเพื่อเริ่มต้นการเดินทางกับ NEXTTRIP</h2>
+        <div class="login-option">
+            <img src="google-icon.png" alt="Google Icon"> ดำเนินการต่อด้วย Google
+        </div>
+        <div class="login-option">
+            <img src="email-icon.png" alt="Email Icon"> ดำเนินการต่อด้วย Email
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

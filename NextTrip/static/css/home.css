@@ -1,0 +1,92 @@
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  .header {
+      background-color: #2a8c2f;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+  }
+
+  .header div {
+      font-size: 1.2em;
+  }
+
+  .main-image {
+      position: relative;
+      text-align: center;
+      color: black;
+  }
+
+  .main-image img {
+      width: 100%;
+      height: auto;
+  }
+
+  .main-image h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5em;
+      color: #333;
+  }
+
+  .location-text {
+      text-align: center;
+      font-size: 1.2em;
+      color: #555;
+      margin: 10px 0;
+  }
+
+  .quiz-box {
+      background-color: #e0f7da;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.2em;
+      border-radius: 8px;
+  }
+
+  .quiz-box button {
+      background-color: #2a8c2f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+  }
+
+  .recommendations,
+  .regions {
+      padding: 20px;
+      text-align: center;
+  }
+
+  .recommendations h2,
+  .regions h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+  }
+
+  .place-card,
+  .region-card {
+      display: inline-block;
+      width: 150px;
+      margin: 10px;
+      text-align: center;
+  }
+
+  .place-card img,
+  .region-card img {
+      width: 100%;
+      border-radius: 8px;
+  }

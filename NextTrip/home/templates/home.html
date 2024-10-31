@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextTrip - เกาะล้าน</title>
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+    <div class="header">
+        <div>NextTrip</div>
+        <div><a href="{% url 'login' %}" style="color: white; text-decoration: none;">เข้าสู่ระบบ</a></div>
+    </div>
+
+    <div class="main-image">
+        <img src="island.jpg" alt="เกาะล้าน">
+        <h1>เกาะล้าน</h1>
+    </div>
+    <div class="location-text">
+        ต.นาเกลือ อ.บางละมุง จ.ชลบุรี
+    </div>
+
+    <div class="quiz-box">
+        <p>ทริปไหนใช่สำหรับคุณ? เล่นควิซสนุก ๆ กับเรา แล้วรับคำแนะนำการเดินทางที่ตรงใจคุณ!</p>
+        <button>เล่นเลย</button>
+    </div>
+
+    <div class="recommendations">
+        <h2>สถานที่น่าสนใจสำหรับคุณ</h2>
+      <a href="traveldetail/P03000001/"> 
+         <div class="place-card">
+            <img src="https://tatapi.tourismthailand.org/tatfs/Image/custompoi/picture/P03000001_1.jpg" alt="พระตำหนักภูพิงคราชนิเวศน์">
+            <p>พระตำหนักภูพิงคราชนิเวศน์</p>
+        </div>
+    </a>
+        <div class="place-card">
+            <img src="temple.jpg" alt="วัดหลวงพ่อใหญ่ จังหวัดนครนายก">
+            <p>วัดหลวงพ่อใหญ่ จังหวัดนครนายก</p>
+        </div>
+        <div class="place-card">
+            <img src="beach.jpg" alt="หาดพระนาง จังหวัดกระบี่">
+            <p>หาดพระนาง จังหวัดกระบี่</p>
+        </div>
+        <div class="place-card">
+            <img src="cave.jpg" alt="ถ้ำเชียงดาว">
+            <p>ถ้ำเชียงดาว</p>
+        </div>
+    </div>
+
+    <div class="regions">
+        <h2>ไปไหนกันดี</h2>
+        <div class="region-card">
+            <img src="north.jpg" alt="ภาคเหนือ">
+            <p>ภาคเหนือ</p>
+        </div>
+        <div class="region-card">
+            <img src="central.jpg" alt="ภาคกลาง">
+            <p>ภาคกลาง</p>
+        </div>
+        <div class="region-card">
+            <img src="south.jpg" alt="ภาคใต้">
+            <p>ภาคใต้</p>
+        </div>
+        <div class="region-card">
+            <img src="east.jpg" alt="ภาคตะวันออก">
+            <p>ภาคตะวันออก</p>
+        </div>
+        <div class="region-card">
+            <img src="west.jpg" alt="ภาคตะวันตก">
+            <p>ภาคตะวันตก</p>
+        </div>
+        <div class="region-card">
+            <img src="northeast.jpg" alt="ภาคตะวันออกเฉียงเหนือ">
+            <p>ภาคตะวันออกเฉียงเหนือ</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
