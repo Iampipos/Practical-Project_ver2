@@ -7,6 +7,8 @@ urlpatterns = [
     path('tourist-data/', views.get_tourist_data, name='tourist_data'),
     path('transport-data/', views.get_transport_data, name='transport_data'),
     path('traveldetail/<slug:place_id>/', views.traveldetail, name='traveldetail'),
+    path('register/', views.register, name='register'),
+    path('detail_data/', views.get_detail_data, name='detail_data'),
 
 
 ]

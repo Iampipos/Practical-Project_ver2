@@ -13,62 +13,26 @@
         }
         body {
             font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* ใส่รูปพื้นหลังที่คุณต้องการ */
+            background-size: cover;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-        .header {
-            width: 100%;
-            background-color: #2a8c2f;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-        .header .logo {
-            font-size: 1.2em;
-            display: flex;
-            align-items: center;
-        }
-        .header .login-button {
-            color: white;
-            text-decoration: none;
-            font-size: 1em;
-        }
-        .search-bar {
-            background-color: #f4f4e8;
-            border-radius: 20px;
-            width: 60%;
-            height: 25px;
-            margin: 0 15px;
-        }
-        .main-image {
-            position: relative;
-            width: 100%;
-            max-width: 768px;
-        }
-        .main-image img {
-            width: 100%;
-            height: auto;
+            height: 100vh;
+            color: #333;
         }
         .login-box {
-            position: absolute;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff8e1;
+            background-color: rgba(255, 248, 225, 0.9);
             padding: 30px;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 300px;
-            text-align: center;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-        .login-box h2 {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 20px;
+        h2 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
         }
         .login-option {
             display: flex;
@@ -87,28 +51,79 @@
             height: 20px;
             margin-right: 10px;
         }
+        .input-field {
+            text-align: left;
+            margin: 10px 0;
+        }
+        label {
+            font-size: 1em;
+            color: #333;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a8c2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #24732a;
+        }
+        .register-link {
+            font-size: 0.9em;
+            color: #2a8c2f;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+        }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="logo">NextTrip</div>
-    <input type="text" class="search-bar" placeholder="">
-    <a href="#" class="login-button">เข้าสู่ระบบ</a>
-</div>
-
-<div class="main-image">
-    <img src="island.jpg" alt="เกาะล้าน">
-    <div class="login-box">
-        <h2>เข้าสู่ระบบเพื่อเริ่มต้นการเดินทางกับ NEXTTRIP</h2>
-        <div class="login-option">
-            <img src="google-icon.png" alt="Google Icon"> ดำเนินการต่อด้วย Google
-        </div>
-        <div class="login-option">
-            <img src="email-icon.png" alt="Email Icon"> ดำเนินการต่อด้วย Email
-        </div>
+<div class="login-box" id="login-options">
+    <h2>เข้าสู่ระบบเพื่อเริ่มต้นการเดินทางกับ NEXTTRIP</h2>
+    <div class="login-option" onclick="showLoginForm()">
+        <img src="google-icon.png" alt="Google Icon"> ดำเนินการต่อด้วย Google
+    </div>
+    <div class="login-option" onclick="showLoginForm()">
+        <img src="email-icon.png" alt="Email Icon"> ดำเนินการต่อด้วย Email
     </div>
 </div>
+
+<div class="login-box" id="login-form" style="display: none;">
+    <h2>ยินดีต้อนรับอีกครั้ง</h2>
+    <form method="POST" action="/login">
+        <div class="input-field">
+            <label for="email">ที่อยู่อีเมล</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-field">
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit-btn">เข้าสู่ระบบ</button>
+    </form>
+    <a href="/register" class="register-link">ไม่ได้เป็นสมาชิกใช่ไหม ลงทะเบียน</a>
+</div>
+
+<script>
+    function showLoginForm() {
+        document.getElementById('login-options').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+    }
+</script>
 
 </body>
 </html>

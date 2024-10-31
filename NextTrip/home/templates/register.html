@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียน - NextTrip</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* ใส่รูปพื้นหลังที่คุณต้องการ */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .registration-box {
+            background-color: rgba(255, 248, 225, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .option, .input-field {
+            text-align: left;
+            margin: 10px 0;
+        }
+        label {
+            font-size: 1em;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #2a8c2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #24732a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="registration-box">
+    <!-- หน้าลงทะเบียนข้อมูลส่วนตัว -->
+    <div id="step1">
+        <h2>เข้าร่วมเพื่อสร้างทริปที่น่าประทับใจ</h2>
+        <div class="input-field">
+            <label for="first_name">ชื่อจริง</label>
+            <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="input-field">
+            <label for="last_name">นามสกุล</label>
+            <input type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="input-field">
+            <label for="email">ที่อยู่อีเมล</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-field">
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button class="submit-btn" onclick="showStep(2)">ต่อไป</button>
+    </div>
+
+    <!-- หน้าถามเพศ -->
+    <div id="step2" style="display: none;">
+        <h2>เพศของคุณคืออะไร</h2>
+        <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
+        <div class="option">
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">ผู้หญิง</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">ผู้ชาย</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">อื่นๆ</label>
+        </div>
+        <button class="submit-btn" onclick="showStep(3)">ต่อไป</button>
+    </div>
+
+    <!-- หน้าถามช่วงอายุ -->
+    <div id="step3" style="display: none;">
+        <h2>คุณอยู่ในช่วงอายุไหน</h2>
+        <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
+        <div class="option">
+            <input type="radio" id="under18" name="age" value="under18">
+            <label for="under18">ต่ำกว่า 18</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="age18_24" name="age" value="18-24">
+            <label for="age18_24">18-24</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="age25_34" name="age" value="25-34">
+            <label for="age25_34">25-34</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="age35_44" name="age" value="35-44">
+            <label for="age35_44">35-44</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="age45_54" name="age" value="45-54">
+            <label for="age45_54">45-54</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="age55_64" name="age" value="55-64">
+            <label for="age55_64">55-64</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="above64" name="age" value="64+">
+            <label for="above64">64 ขึ้นไป</label>
+        </div>
+        <button class="submit-btn" onclick="showStep(4)">ต่อไป</button>
+    </div>
+
+        <!-- หน้าการเลือกประเภทการท่องเที่ยว -->
+    <div id="step4" style="display: none;">
+    <h2>การท่องเที่ยวแบบที่คุณชอบ</h2>
+    <p>เลือกอย่างน้อย 5 ประเภท</p>
+    <div class="grid-container">
+        {% for type in tour_types %}
+        <div class="grid-item">
+            <input type="checkbox" id="type_{{ type.id }}" name="favorite_types" value="{{ type.id }}">
+            <label for="type_{{ type.id }}">
+                <img src="{{ type.image_url|default:'default.jpg' }}" alt="{{ type.name }}">
+                <span>{{ type.name }}</span>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="submit-btn">เสร็จสิ้น</button>
+</div>
+
+</div>
+
+<script>
+    function showStep(step) {
+        document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+        document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+        document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+        document.getElementById('step4').style.display = step === 4 ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>
