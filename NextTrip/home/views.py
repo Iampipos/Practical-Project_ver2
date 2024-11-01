@@ -9,6 +9,7 @@ from django.contrib.auth import login as auth_login, authenticate
 from .models import UserProfile, TourType
 from django.contrib import messages
 from django.contrib.auth.models import User
+import pandas as pd
 
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
@@ -17,7 +18,14 @@ API_KEY = os.getenv('API_KEY')
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    if request.user.is_authenticated:
+        if request.user.email == "user1@example.com":
+            return render(request, 'home_user1.html')  # แสดงหน้า home_user1.html สำหรับผู้ใช้ 1
+        elif request.user.email == "user2@example.com":
+            return render(request, 'home_user2.html')  # แสดงหน้า home_user2.html สำหรับผู้ใช้ 2
+
+    return render(request, 'home.html')  # ถ้าผู้ใช้ไม่ได้เข้าสู่ระบบ จะแสดงหน้า home.html
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -153,3 +161,15 @@ def get_detail_data(request):
         return JsonResponse(data)
     else:
         return JsonResponse({'error': 'Failed to fetch data'}, status=response.status_code)
+    
+    # ฟังก์ชันอ่านไฟล์ CSV
+def get_places_data():
+    # ระบุเส้นทางไปยังไฟล์ CSV
+    csv_file_path = 'NextTrip/home/สถานที่และวิธีการเดินทาง - สถานที่และวิธีการเดินทาง (1).csv'
+    
+    # อ่านไฟล์ CSV
+    df = pd.read_csv(csv_file_path)
+    
+    # แปลงข้อมูลเป็น list of dictionaries
+    return df.to_dict(orient='records')
+    
