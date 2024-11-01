@@ -5,9 +5,10 @@ import requests
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login as auth_login, authenticate
 from .models import UserProfile, TourType
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
@@ -18,7 +19,7 @@ API_KEY = os.getenv('API_KEY')
 def home(request):
     return render(request, 'home.html')
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -27,7 +28,7 @@ def login(request):
         user = authenticate(request, username=email, password=password)
 
         if user is not None:
-            login(request, user)
+            auth_login(request, user)
             return redirect('home')  # เปลี่ยนหน้าไปยัง home
         else:
             messages.error(request, 'อีเมลหรือรหัสผ่านไม่ถูกต้อง')
@@ -99,18 +100,24 @@ def register(request):
         age_group = request.POST['age']
         favorite_types_ids = request.POST.getlist('favorite_types')  # รับค่าประเภทการท่องเที่ยวที่เลือกเป็น list
         
-           # ตรวจสอบว่าอีเมลนี้มีอยู่ในระบบแล้วหรือไม่
-        if UserProfile.objects.filter(email=email).exists():
+       # ตรวจสอบว่าอีเมลนี้มีอยู่ในระบบ User หรือไม่
+        if User.objects.filter(email=email).exists():
             messages.error(request, 'อีเมลนี้มีการลงทะเบียนแล้ว')
             return render(request, 'register.html', {'tour_types': TourType.objects.all()})
+        
+         # สร้างผู้ใช้ใหม่
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password
+        )
 
 
         # สร้างโปรไฟล์ผู้ใช้ใหม่และบันทึกข้อมูล
         user_profile = UserProfile.objects.create(
+            user=user,  # เชื่อมโยงกับ User ที่สร้างไว้
             first_name=first_name,
             last_name=last_name,
-            email=email,
-            password=password,
             gender=gender,
             age_group=age_group
         )
