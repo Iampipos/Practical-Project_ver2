@@ -82,8 +82,14 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         gender = request.POST['gender']
-        age_group = request.POST['age_group']
+        age_group = request.POST['age']
         favorite_types_ids = request.POST.getlist('favorite_types')  # รับค่าประเภทการท่องเที่ยวที่เลือกเป็น list
+        
+           # ตรวจสอบว่าอีเมลนี้มีอยู่ในระบบแล้วหรือไม่
+        if UserProfile.objects.filter(email=email).exists():
+            messages.error(request, 'อีเมลนี้มีการลงทะเบียนแล้ว')
+            return render(request, 'register.html', {'tour_types': TourType.objects.all()})
+
 
         # สร้างโปรไฟล์ผู้ใช้ใหม่และบันทึกข้อมูล
         user_profile = UserProfile.objects.create(
@@ -103,6 +109,11 @@ def register(request):
     # ดึงประเภทการท่องเที่ยวทั้งหมดเพื่อใช้ในฟอร์ม
     tour_types = TourType.objects.all()
     return render(request, 'register.html', {'tour_types': tour_types})
+
+def check_email_exists(request):
+    email = request.GET.get('email')
+    exists = UserProfile.objects.filter(email=email).exists()
+    return JsonResponse({'exists': exists})
 
 def get_detail_data(request):
     url = 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/P03019076'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้

@@ -30,6 +30,37 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
+          .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .popup-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        max-width: 300px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .popup-content p {
+        margin-bottom: 20px;
+    }
+    .popup-content button {
+        padding: 10px 20px;
+        background-color: #2a8c2f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
         h2 {
             font-size: 1.4em;
             margin-bottom: 10px;
@@ -72,101 +103,114 @@
 </head>
 <body>
 
-<div class="registration-box">
-    <!-- หน้าลงทะเบียนข้อมูลส่วนตัว -->
-    <div id="step1">
-        <h2>เข้าร่วมเพื่อสร้างทริปที่น่าประทับใจ</h2>
-        <div class="input-field">
-            <label for="first_name">ชื่อจริง</label>
-            <input type="text" id="first_name" name="first_name" required>
+<form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+    <div class="registration-box">
+      
+        <!-- หน้าลงทะเบียนข้อมูลส่วนตัว -->
+        <div id="step1">
+            <h2>เข้าร่วมเพื่อสร้างทริปที่น่าประทับใจ</h2>
+            <div class="input-field">
+                <label for="first_name">ชื่อจริง</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="input-field">
+                <label for="last_name">นามสกุล</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div class="input-field">
+                <label for="email">ที่อยู่อีเมล</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-field">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div id="email-error" class="error-message" style="display: none;">อีเมลนี้มีการลงทะเบียนแล้ว</div>
+            <button type="button" class="submit-btn" onclick="showStep(2)">ต่อไป</button>
         </div>
-        <div class="input-field">
-            <label for="last_name">นามสกุล</label>
-            <input type="text" id="last_name" name="last_name" required>
-        </div>
-        <div class="input-field">
-            <label for="email">ที่อยู่อีเมล</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="input-field">
-            <label for="password">รหัสผ่าน</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button class="submit-btn" onclick="showStep(2)">ต่อไป</button>
-    </div>
 
-    <!-- หน้าถามเพศ -->
-    <div id="step2" style="display: none;">
-        <h2>เพศของคุณคืออะไร</h2>
-        <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
-        <div class="option">
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">ผู้หญิง</label>
+        {% if messages %}
+        <div id="popup" class="popup">
+             <div class="popup-content">
+                {% for message in messages %}
+                     <p>{{ message }}</p>
+                 {% endfor %}
+            <button onclick="closePopup()">ตกลง</button>
+             </div>
         </div>
-        <div class="option">
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">ผู้ชาย</label>
-        </div>
-        <div class="option">
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">อื่นๆ</label>
-        </div>
-        <button class="submit-btn" onclick="showStep(3)">ต่อไป</button>
-    </div>
+        {% endif %}
 
-    <!-- หน้าถามช่วงอายุ -->
-    <div id="step3" style="display: none;">
-        <h2>คุณอยู่ในช่วงอายุไหน</h2>
-        <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
-        <div class="option">
-            <input type="radio" id="under18" name="age" value="under18">
-            <label for="under18">ต่ำกว่า 18</label>
+        <!-- หน้าถามเพศ -->
+        <div id="step2" style="display: none;">
+            <h2>เพศของคุณคืออะไร</h2>
+            <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
+            <div class="option">
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">ผู้หญิง</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">ผู้ชาย</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">อื่นๆ</label>
+            </div>
+            <button type="button" class="submit-btn" onclick="showStep(3)">ต่อไป</button>
         </div>
-        <div class="option">
+
+        <!-- หน้าถามช่วงอายุ -->
+        <div id="step3" style="display: none;">
+            <h2>คุณอยู่ในช่วงอายุไหน</h2>
+            <p>คำถามจะช่วยให้เรารู้จักคุณได้ดียิ่งขึ้น</p>
+            <div class="option">
             <input type="radio" id="age18_24" name="age" value="18-24">
             <label for="age18_24">18-24</label>
-        </div>
-        <div class="option">
+            </div>
+           <div class="option">
             <input type="radio" id="age25_34" name="age" value="25-34">
             <label for="age25_34">25-34</label>
-        </div>
-        <div class="option">
+            </div>
+            <div class="option">
             <input type="radio" id="age35_44" name="age" value="35-44">
             <label for="age35_44">35-44</label>
-        </div>
-        <div class="option">
+            </div>
+            <div class="option">
             <input type="radio" id="age45_54" name="age" value="45-54">
             <label for="age45_54">45-54</label>
-        </div>
-        <div class="option">
+            </div>
+          <div class="option">
             <input type="radio" id="age55_64" name="age" value="55-64">
             <label for="age55_64">55-64</label>
-        </div>
-        <div class="option">
+          </div>
+            <div class="option">
             <input type="radio" id="above64" name="age" value="64+">
             <label for="above64">64 ขึ้นไป</label>
-        </div>
-        <button class="submit-btn" onclick="showStep(4)">ต่อไป</button>
-    </div>
+            </div>
+            <!-- (ตัวเลือกอายุที่เหลือ) -->
+            <button type="button" class="submit-btn" onclick="showStep(4)">ต่อไป</button>
+            </div>
 
         <!-- หน้าการเลือกประเภทการท่องเที่ยว -->
-    <div id="step4" style="display: none;">
-    <h2>การท่องเที่ยวแบบที่คุณชอบ</h2>
-    <p>เลือกอย่างน้อย 5 ประเภท</p>
-    <div class="grid-container">
-        {% for type in tour_types %}
-        <div class="grid-item">
-            <input type="checkbox" id="type_{{ type.id }}" name="favorite_types" value="{{ type.id }}">
-            <label for="type_{{ type.id }}">
-                <img src="{{ type.image_url|default:'default.jpg' }}" alt="{{ type.name }}">
-                <span>{{ type.name }}</span>
-            </label>
+        <div id="step4" style="display: none;">
+            <h2>การท่องเที่ยวแบบที่คุณชอบ</h2>
+            <p>เลือกอย่างน้อย 5 ประเภท</p>
+            <div class="grid-container">
+                {% for type in tour_types %}
+                <div class="grid-item">
+                    <input type="checkbox" id="type_{{ type.id }}" name="favorite_types" value="{{ type.id }}">
+                    <label for="type_{{ type.id }}">
+                        <img src="{{ type.image_url|default:'default.jpg' }}" alt="{{ type.name }}">
+                        <span>{{ type.name }}</span>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="submit-btn">เสร็จสิ้น</button>
         </div>
-        {% endfor %}
     </div>
-    <button class="submit-btn">เสร็จสิ้น</button>
-</div>
-
+</form>
 </div>
 
 <script>
@@ -175,6 +219,12 @@
         document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
         document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
         document.getElementById('step4').style.display = step === 4 ? 'block' : 'none';
+    }
+</script>
+<script>
+    // ฟังก์ชันปิดกล่องข้อความแจ้งเตือน
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
     }
 </script>
 
