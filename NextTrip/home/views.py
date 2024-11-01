@@ -5,7 +5,7 @@ import requests
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login,authenticate
 from .models import UserProfile, TourType
 from django.contrib import messages
 
@@ -19,7 +19,21 @@ def home(request):
     return render(request, 'home.html')
 
 def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # ใช้ Django authentication system
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # เปลี่ยนหน้าไปยัง home
+        else:
+            messages.error(request, 'อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+
     return render(request, 'login.html')
+
 
 def traveldetail(request,place_id):
     print (place_id)
@@ -44,22 +58,14 @@ def traveldetail(request,place_id):
 
 
 def get_tourist_data(request):
-<<<<<<< Updated upstream
-    url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ภูเขา'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
-=======
     url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ทะเล'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
->>>>>>> Stashed changes
     headers = {
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json',
         'Accept-Language':'th'
     }
     params = {
-<<<<<<< Updated upstream
-      "keyword":"ภูเขา" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
-=======
       "keyword":"ทะเล" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
->>>>>>> Stashed changes
     }
     response = requests.get(url, headers=headers, params=params)
     

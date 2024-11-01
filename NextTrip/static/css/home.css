@@ -1,3 +1,4 @@
+/* เริ่มต้นด้วยการตั้งค่าแบบพื้นฐานสำหรับเดสก์ท็อป */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,245 +6,111 @@ body {
     box-sizing: border-box;
 }
 
+/* Responsive Navbar */
 .navbar {
-    background-color: #2a8c2f;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 50px;
-    height:  60px;
-    font-family: Arial, sans-serif;
-    position: fixed ;
-    top : 0;
-    width : 100%;
-    z-index: 1000;
-    box-sizing: border-box;
-
-}
-
-
-.navbar div {
-    font-size: 25px;
-}
-
-.login-link {
-  color: white;
-  text-decoration: none;
-}
-
-/* Effect เม้าไปโดน */
-.login-link:hover {
-  text-decoration: underline;
+    padding: 10px 20px;
 }
 
 .search-container {
-    position: center;
-    width: 450px; /* กำหนดความกว้างของช่องค้นหา */
-}
-
-
-
-.search-input {
     width: 100%;
-    padding: 10px 20px 10px 40px; 
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    margin-top: 10px; /* ปรับระยะห่างจากขอบบน */
-    margin-bottom: 10px;
+    max-width: 450px;
+    /* จำกัดความกว้างสูงสุด */
 }
 
-
-.main-image {
-    position: relative;
-    text-align: center;
-    /* color: rgb(253, 253, 253); */
-}
-
+/* Responsive Main Image */
 .main-image img {
-    /* width: 1480px; */
     width: 100%;
-    /* height: auto; */
-    height: 650px;
+    height: auto;
 }
 
 .main-image h1 {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 50px;
-    color: #e9dbdb;
+    font-size: 3vw;
+    /* ปรับขนาดตัวอักษรให้สัมพันธ์กับหน้าจอ */
 }
 
 .location-text {
-    position: absolute;
-    top: 58%; /* ปรับตำแหน่งให้ข้อความอยู่ใต้ h1 */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    color: #e6e6e6;
-    /* margin: 0; */
+    font-size: 1.5vw;
 }
 
- .quiz-box {
-    display: flex;
-    align-items: center; /* Vertically centers items */
-    justify-content: center; /* Horizontally centers items */
-    background-color: #D5ED9F;
+/* Responsive Quiz Box */
+.quiz-box {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
     padding: 20px;
-    margin: 20px auto;
-    width: 800px;
-    height: 200px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-.quiz-all {
-    margin-right: 15px;
 }
 
-.quiz-button {
-    background-color: transparent !important;
-    border: 1px solid black !important;
-    padding: 2px !important;
-    cursor: pointer;
-    border-radius: 8px;
-    display: inline-block;
-    box-sizing: border-box; /* ควบคุมขอบเขต */
-}
-
-.quiz-caption {
-    margin: 5px 0 0;
-    font-size: 20px;
-    color: black;
-}
-
-.quiz-image {
-    width: 165px;
-    height: 165px;
-    border-radius: 8px;
-    /* margin-right: 15px; */
-    object-fit: cover;
-}
-
-.quiz-content {
-    display: flex;
-    flex-direction: column; /* Aligns text and button vertically */
-    align-items: flex-start; /* Aligns text to the left */
-}
-
-.quiz-content p {
-    font-size: 30px;
-    color: #333;
-    margin: 0 0 10px;
-}
-
-.play {
-    position: absolute; /* ตั้งตำแหน่งให้เป็นแบบ absolute */
-    bottom: 10px; /* ระยะห่างจากด้านล่าง */
-    right: 10px; /* ระยะห่างจากด้านขวา */
-    background-color: #2a8c2f;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 30px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.recommendations {
-    padding: 10px;
-    text-align: center;
-}
-
-.recommendations h2 {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
+/* Responsive Place Cards */
 .place-card {
-    display: inline-block;
-    width: 200px;
-    margin: 10px;
-    padding: 2px;
-    text-align: center;
-    border: 1px solid #000000; /* ขอบรอบการ์ด */
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.place-card img {
     width: 100%;
-    height: 150px;
-    border-radius: 8px;
-    object-fit: cover;
+    max-width: 200px;
 }
 
-.place-card p {
-    margin: 5px 0;
-    font-size: 1em;
-}
-
-.place-card i {
-    margin-right: 5px;
-    color: #333; /* สีไอคอน tag */
-}
-
-
-
-.regions {
-    padding-top: 0; 
-    padding: 10px;
-    text-align: center;
-}
-
-
-.regions h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-}
-
-
+/* Responsive Region Cards */
 .region-card {
-    display: inline-block;
-    width: 150px;
-    margin: 10px;
-    text-align: center;
-   
-}
-
-
-.region-card img {
     width: 100%;
-    border-radius: 8px;
-} 
-
-
-.regions {
-    padding-top: 0; 
-    padding: 10px;
-    text-align: center;
+    max-width: 150px;
 }
 
-.regions h2 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
+/* Media Queries for Tablets */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .main-image h1 {
+        font-size: 6vw;
+    }
+
+    .location-text {
+        font-size: 4vw;
+    }
+
+    .quiz-box {
+        width: 90%;
+    }
+
+    .place-card {
+        width: 45%;
+    }
+
+    .region-card {
+        width: 45%;
+    }
 }
 
-.region-card {
-    display: inline-block;
-    width: 150px;
-    margin: 10px;
-    text-align: center;
-   
+/* Media Queries for Mobile Devices */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .main-image h1 {
+        font-size: 8vw;
+    }
+
+    .location-text {
+        font-size: 5vw;
+    }
+
+    .quiz-box {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .place-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .region-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
-
-
-.region-card img {
-    width: 100%;
-    border-radius: 8px;
-} 
