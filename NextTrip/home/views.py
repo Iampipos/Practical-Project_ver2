@@ -58,14 +58,14 @@ def traveldetail(request,place_id):
 
 
 def get_tourist_data(request):
-    url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ทะเล'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
+    url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ถ้ำ'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
     headers = {
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json',
         'Accept-Language':'th'
     }
     params = {
-      "keyword":"ทะเล" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
+      "keyword":"ถ้ำ" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
     }
     response = requests.get(url, headers=headers, params=params)
     
