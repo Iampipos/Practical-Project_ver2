@@ -44,14 +44,22 @@ def traveldetail(request,place_id):
 
 
 def get_tourist_data(request):
+<<<<<<< Updated upstream
     url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ภูเขา'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
+=======
+    url = 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?keyword=ทะเล'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
+>>>>>>> Stashed changes
     headers = {
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json',
         'Accept-Language':'th'
     }
     params = {
+<<<<<<< Updated upstream
       "keyword":"ภูเขา" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
+=======
+      "keyword":"ทะเล" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
+>>>>>>> Stashed changes
     }
     response = requests.get(url, headers=headers, params=params)
     
@@ -116,14 +124,14 @@ def check_email_exists(request):
     return JsonResponse({'exists': exists})
 
 def get_detail_data(request):
-    url = 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/P03019076'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
+    url = 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/P03004898'  # เปลี่ยน 'endpoint' ให้เป็น endpoint ที่คุณต้องการเรียกใช้
     headers = {
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json',
         'Accept-Language':'th'
     }
     params = {
-      "place_id":"P03019076" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
+      "place_id":"P03004898" # เพิ่มพารามิเตอร์ที่ API ต้องการ เช่น 'category': 'temples' เป็นต้น
     }
     response = requests.get(url, headers=headers, params=params)
     
