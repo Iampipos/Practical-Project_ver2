@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextTrip - HomePage</title>
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+   
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div>NextTrip</div>
+        <div class="search-container">
+            <i class="bi bi-search search-icon"></i> <!-- ไอคอนค้นหา -->
+            <input type="text" placeholder="Search icons..." class="search-input">
+        </div>
+        <div><a href="{% url 'login' %}" class="login-link">เข้าสู่ระบบ</a></div>
+    </div>
+    
+    <div class="main-image">
+        <img src="https://s359.kapook.com/pagebuilder/e7441beb-8443-4507-99d7-b73545a06db5.jpg" alt="ดอยอ่างข่าง">
+        <h1>ดอยอ่างข่างของ_user2</h1>
+        <div class="location-text">
+            ต.แม่งอน อ.ฝาง จ.เชียงใหม่
+        </div>     
+    </div>
+   
+     <div class="quiz-box">
+        <div class="quiz-all">
+            <button class="quiz-button">
+                <img src="https://www.scb.co.th/content/media/personal-banking/stories-tips/traveling-thailand/traveling-thailand2.jpg" alt="ภาพตัวอย่าง" class="quiz-image">
+                <p class="quiz-caption">คุณเหมาะกับสถานที่<br>แบบไหน</p>
+            </button>
+        </div>
+        <div class="quiz-content">
+            <p>ทริปไหนใช่สำหรับคุณ? <br>เล่นควิซสนุก ๆ กับเราแล้ว <br> รับคำแนะนำการเดินทางที่ตรงใจคุณ!</p>
+        </div>
+        <button class = "play">เล่นเลย</button>
+    </div>
+    
+    <div class="recommendations">
+        <h2>สถานที่น่าสนใจสำหรับคุณ_user2</h2>
+        <a href="traveldetail/P03000001/"> 
+        <div class="place-card">
+            <img src="https://img.12go.com/0/fit/1024/0/ce/1/plain/s3://12go-web-static/static/images/upload-media/4087.jpeg" alt="พระตำหนักภูพิงคราชนิเวศน์">
+            <p>พระตำหนักภูพิงคราชนิเวศน์</p>
+            <p><i class="bi bi-tag"></i> พระตำหนัก</p>
+        </div>
+    </a>
+    <a href="traveldetail/P03019049/"> 
+        <div class="place-card">
+            <img src="https://www.mcot.net/uploads/article/202407/09c5ec326138d930e8e9f5bfaadfb659.jpg" alt="อุทยานแห่งชาติหมู่เกาะลันตา">
+            <p>อุทยานแห่งชาติหมู่เกาะลันตา</p>
+            <p><i class="bi bi-tag"></i> อุทยาน</p>
+        </div>
+    </a>
+    <!-- P03019076 -->
+    <a href="traveldetail/P03000766/"> 
+        <div class="place-card">
+            <img src="https://www.รถตู้เช่าตรัง.com/images/content/original-1503737630791.jpg" alt="เกาะมุก - ถ้ำมรกต">
+            <p>เกาะมุก - ถ้ำมรกต</p>
+            <p><i class="bi bi-tag"></i> อุทยาน</p>
+        </div>
+    </a>
+        <a href="traveldetail/P03001249/"> 
+        <div class="place-card">
+            <img src="https://www.uptomego.com/wp-content/uploads/2022/06/%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A8%E0%B8%A3%E0%B8%B5cover-2-600x400.jpg" alt="น้ำตกกรุงชิง">
+            <p>น้ำตกกรุงชิง</p>
+            <p><i class="bi bi-tag"></i> อุทยาน</p>
+        </div>
+    </a>
+    </div>
+    
+    <div class="regions">
+        <h2>ไปไหนกันดี</h2>
+    <div class = "region-cards">
+        <div class="region-card">
+            <img src="https://www.ktc.co.th/pub/media/Article/baan-rak-thai.webp" alt="ภาคเหนือ">
+            <p>ภาคเหนือ</p>
+        </div>
+        <div class="region-card">
+            <img src="https://www.thailand.go.th/uploads/posts/photo_1673948909_1.jpeg" alt="ภาคกลาง">
+            <p>ภาคกลาง</p>
+        </div>
+        <div class="region-card">
+            <img src="https://www.thailand.go.th/uploads/posts/photo_1673948909_4.jpeg" alt="ภาคใต้">
+            <p>ภาคใต้</p>
+        </div>
+        <div class="region-card">
+            <img src="https://www.thailand.go.th/uploads/posts/photo_1673948909_2.jpeg" alt="ภาคตะวันออก">
+            <p1>ภาคตะวันออก</p1>
+        </div>
+        <div class="region-card">
+            <img src="https://www.thailand.go.th/uploads/posts/photo_1673948909_3.jpeg" alt="ภาคตะวันออกเฉียงเหนือ">
+            <p1>ภาคตะวันออกเฉียงเหนือ</p1>
+        </div>
+        <div class="region-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/1012_-_Erawan_Waterfall%2C_2nd_floor_-_Waterfall_in_Si_Sawat.jpg/1024px-1012_-_Erawan_Waterfall%2C_2nd_floor_-_Waterfall_in_Si_Sawat.jpg" alt="ภาคตะวันตก">
+            <p1>ภาคตะวันตก</p1>
+        </div>
+    </div> 
+</div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+</body>
+
+</html>
