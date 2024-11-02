@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/traveldetail.css' %}">
 </head>
 <body>
-<!-- 
-    <div class="header">
-        <button class="favorite-button">♡ Fav</button>
-    </div> -->
-
     <div class="navbar">
         <div>NextTrip</div>
         <div class="search-container">
@@ -22,61 +17,36 @@
         <div><a href="{% url 'login' %}" class="login-link">เข้าสู่ระบบ</a></div>
     </div>
 
-    <div class="main-image">
-        <img src="https://s359.kapook.com/pagebuilder/e7441beb-8443-4507-99d7-b73545a06db5.jpg" alt="PicMain">
-        <button class="favorite-button" onclick="toggleFavorite(this)">♡ Fav</button>
-    </div>
+    <div class="main-image"></div>
+
 
     <div class="container">
         <div class="image-container">
             <img src="{{ result.web_picture_urls.1 }}" alt="">
             <h2>{{ result.place_name }}</h2>
         </div>
-        
-        <!-- แถบแท็บ รายละเอียด และ วิธีการเดินทาง -->
-    <div class="dnavbar">
-        <h3 onclick="showContent('details')" id="details-tab" class="active-tab">รายละเอียด</h3>
-        <h3 onclick="showContent('travel')" id="travel-tab">วิธีการเดินทาง</h3>
-    </div>
 
-    <!-- ส่วนเนื้อหาที่จะแสดงใต้แท็บ -->
-    <div id="details" class="content-section active">
-        <p>{{ result.place_information.detail }}</p>
-    </div>
+        <div class="content">
+            <!-- Left content -->
+            <div class="content-left">
+                <h3>รายละเอียด</h3>
+                <p>{{ result.place_information.detail }}</p>
+                
+                <h3>วิธีการเดินทาง</h3>
+                <p>สามารถเดินทางโดยเรือข้ามฟากหรือเรือสปีดโบ๊ตจากพัทยา...</p>
+            </div>
 
-    <div id="travel" class="content-section">
-        <p>สามารถเดินทางโดยเรือข้ามฟากหรือเรือสปีดโบ๊ตจากพัทยา...</p>
-    </div>
-    </div>
-
-
-     <!-- Right content -->
-     <div class="content-right">
-        <h3>ข้อมูล</h3>
-        <div class="info-box">
-            <p><strong>วันเวลาทำการ:</strong> ทุกวัน 07:00 - 18:00 น.</p>
-            <p><strong>ประเภทแหล่งท่องเที่ยว:</strong> แหล่งท่องเที่ยวทางธรรมชาติ</p>
-            <p><strong>ช่องทางการติดต่อ:</strong> <br>ตำบล: นาเกลือ อำเภอ: บางละมุง จังหวัด: ชลบุรี</p>
-            <p><strong>เว็บไซต์:</strong> <a href="https://www.ipattaya.co/เที่ยวเกาะล้านพัทยา/">https://www.ipattaya.co/เที่ยวเกาะล้านพัทยา/</a></p>
+            <!-- Right content -->
+            <div class="content-right">
+                <h3>ข้อมูล</h3>
+                <div class="info-box">
+                    <p><strong>วันเวลาทำการ:</strong> ทุกวัน 07:00 - 18:00 น.</p>
+                    <p><strong>ประเภทแหล่งท่องเที่ยว:</strong> แหล่งท่องเที่ยวทางธรรมชาติ</p>
+                    <p><strong>ช่องทางการติดต่อ:</strong> <br>ตำบล: นาเกลือ อำเภอ: บางละมุง จังหวัด: ชลบุรี</p>
+                    <p><strong>เว็บไซต์:</strong> <a href="https://www.ipattaya.co/เที่ยวเกาะล้านพัทยา/">https://www.ipattaya.co/เที่ยวเกาะล้านพัทยา/</a></p>
+                </div>
+            </div>
         </div>
     </div>
-    
-
-    <script>
-        function showContent(section) {
-            // ซ่อนทุกส่วนก่อน
-            document.getElementById('details').style.display = 'none';
-            document.getElementById('travel').style.display = 'none';
-
-            // แสดงเฉพาะส่วนที่เลือก
-            document.getElementById(section).style.display = 'block';
-
-            // ปรับ active tab
-            document.getElementById('details-tab').classList.remove('active-tab');
-            document.getElementById('travel-tab').classList.remove('active-tab');
-            document.getElementById(section + '-tab').classList.add('active-tab');
-        }
-        
-    </script>
 </body>
 </html>
