@@ -1,0 +1,155 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* ใส่รูปพื้นหลังที่คุณต้องการ */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+.navbar {
+    background-color: #2a8c2f !important;
+    color: white !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 50px;
+    height:  60px !important;
+    font-family: Arial, sans-serif !important;
+    position: fixed ;
+    top : 0;
+    width : 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.navbar div {
+    font-size: 25px;
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Effect เม้าไปโดน */
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.search-container {
+    position: center;
+    width: 450px !important; /* กำหนดความกว้างของช่องค้นหา */
+}
+
+.search-input {
+    width: 100% !important;
+    padding: 10px 20px 10px 40px !important; 
+    border: 1px solid #ddd !important;
+    border-radius: 25px !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1) !important;
+    font-size: 16px !important;
+    margin-top: 10px !important; /* ปรับระยะห่างจากขอบบน */
+    margin-bottom: 10px !important;
+}
+
+.main-image {
+    position: fixed; /* ทำให้ภาพอยู่ด้านหลังและเต็มหน้าจอ */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-image: url('https://s359.kapook.com/pagebuilder/e7441beb-8443-4507-99d7-b73545a06db5.jpg');
+    background-size: cover; 
+    background-position: center;
+    z-index: -1; /* ทำให้รูปอยู่หลังเนื้อหา */
+}
+
+
+
+.registration-box {
+    background-color: rgba(255, 248, 225, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+.popup-content p {
+    margin-bottom: 20px;
+}
+.popup-content button {
+    padding: 10px 20px;
+    background-color: #2a8c2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+.option, .input-field {
+    text-align: left;
+    margin: 10px 0;
+}
+label {
+    font-size: 1em;
+    color: #333;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a8c2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background-color: #24732a;
+}
